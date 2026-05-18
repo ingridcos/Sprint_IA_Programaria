@@ -12,9 +12,6 @@ Um dashboard diário moderno, responsivo e integrado às APIs do Google (Gmail e
 - **Design Moderno**: Interface limpa, responsiva e agradável com um tema em tons de roxo, utilizando a fonte *Outfit*.
 - **Acesso Fácil**: O usuário faz o login apenas quando necessário, sem armazenar dados sensíveis.
 
-## 🚀 Acesse o Dashboard
-  👉 **[Rodar Localmente](http://localhost:8000/dashboard.html)**
-
 ## 🛠️ Tecnologias Utilizadas
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla).
 - **Gráficos**: [Chart.js](https://www.chartjs.org/).
@@ -23,6 +20,11 @@ Um dashboard diário moderno, responsivo e integrado às APIs do Google (Gmail e
   - Google Calendar API
   - Google Identity Services (OAuth2)
 - **Ferramentas**: IA Antigravity integrada ao VS Code
+
+## 🚀 Acesse o Dashboard
+  👉 **[http://localhost:8000/dashboard.html](http://localhost:8000/dashboard.html)**
+
+  ![Dashboard](image_dashboard.png)
 
 ## ⚙️ Como testar localmente
 As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). Para testar na sua máquina:
