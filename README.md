@@ -1,6 +1,6 @@
 ![Logo Programaria](logo-programaria-roxo-azul-1.png)
 
-# Sprint IA - PrograMaria 
+# Sprint IA - Programaria 
 ## Dashboard com Integração do Gmail e Google Calendar
 
 Um dashboard diário moderno, responsivo e integrado às APIs do Google (Gmail e Google Calendar). Ele ajuda a organizar o começo do dia mostrando a quantidade de emails não lidos, reuniões agendadas para o dia e algumas métricas rápidas, com foco em uma rotina mais produtiva.
