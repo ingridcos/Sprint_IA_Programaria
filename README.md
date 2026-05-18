@@ -1,6 +1,14 @@
 ![Logo Programaria](logo-programaria-roxo-azul-1.png)
 
 # Sprint IA - Programaria 
+
+## 📚 Sobre o projeto
+Este projeto foi desenvolvido como parte da **Sprint IA** do programa de formação em desenvolvimento web da **Programaria**.  
+Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado ao VS Code.  
+
+A instrutora **Gabriela Surita** disponibilizou orientações em seu GitHub:  
+👉 [Curso Vibecoding](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
+
 ## Dashboard com Integração do Gmail e Google Calendar
 
 Um dashboard diário moderno, responsivo e integrado às APIs do Google (Gmail e Google Calendar). Ele ajuda a organizar o começo do dia mostrando a quantidade de emails não lidos, reuniões agendadas para o dia e algumas métricas rápidas, com foco em uma rotina mais produtiva.
@@ -34,13 +42,3 @@ As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao 
 3. Instale a extensão **Live Server**.
 4. Clique com o botão direito em `dashboard.html` → **Open with Live Server**.
 5. O projeto abrirá em algo como `http://localhost:8000/dashboard.htm`.
-
----
-
-## 📚 Sobre o projeto
-Este projeto foi desenvolvido como parte da **Sprint IA** do programa de formação em desenvolvimento web da **Programaria**.  
-Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado ao VS Code.  
-
-A instrutora **Gabriela Surita** disponibilizou orientações em seu GitHub:  
-👉 [Curso Vibecoding](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
-
