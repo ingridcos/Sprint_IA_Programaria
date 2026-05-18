@@ -13,8 +13,7 @@ Um dashboard diário moderno, responsivo e integrado às APIs do Google (Gmail e
 - **Acesso Fácil**: O usuário faz o login apenas quando necessário, sem armazenar dados sensíveis.
 
 ## 🚀 Acesse o Dashboard
-👉 **[Versão Online no GitHub Pages](https://ingridcos.github.io/Sprint_IA_Programaria/dashboard.html)**  
-👉 **[Rodar Localmente](http://localhost:8000/dashboard.html)**
+  👉 **[Rodar Localmente](http://localhost:8000/dashboard.html)**
 
 ## 🛠️ Tecnologias Utilizadas
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla).
