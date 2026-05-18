@@ -2,7 +2,6 @@
 
 # Sprint IA - Programaria 
 
-## 📚 Sobre o projeto
 Este projeto foi desenvolvido como parte da **Sprint IA** do programa de formação em desenvolvimento web da **Programaria**.  
 Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado ao VS Code.  
 
