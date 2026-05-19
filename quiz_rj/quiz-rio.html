@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Rio de Janeiro</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --verde: #009c3b;
+            --amarelo: #ffdf00;
+            --azul: #009fdb;
+            --azul-escuro: #004d7a;
+            --areia: #f5e6c8;
+            --coral: #e8553e;
+            --branco: #ffffff;
+            --sombra: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #009fdb 0%, #0077a8 40%, #004d7a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* SKYLINE */
+        .skyline {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 220px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .skyline svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ONDAS */
+        .waves {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* CONTAINER */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 640px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        /* CARD BASE */
+        .card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 28px;
+            padding: 36px 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* TELA INICIAL */
+        #tela-inicio {
+            text-align: center;
+        }
+
+        .logo-emoji {
+            font-size: 72px;
+            display: block;
+            margin-bottom: 8px;
+            animation: balanco 3s ease-in-out infinite;
+        }
+
+        @keyframes balanco {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .titulo {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--azul-escuro);
+            margin-bottom: 8px;
+        }
+
+        .titulo span {
+            color: var(--verde);
+        }
+
+        .subtitulo {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .fases-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .fase-badge {
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white;
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .fase-badge.verde {
+            background: linear-gradient(135deg, #00c851, var(--verde));
+        }
+
+        .fase-badge.amarela {
+            background: linear-gradient(135deg, #ffb300, #e65100);
+        }
+
+        .fase-badge.coral {
+            background: linear-gradient(135deg, #ff6b6b, var(--coral));
+        }
+
+        /* BOTÃO PRINCIPAL */
+        .btn-principal {
+            background: linear-gradient(135deg, var(--verde), #007a2f);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 48px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(0, 156, 59, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 32px rgba(0, 156, 59, 0.5);
+        }
+
+        .btn-principal:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* TELA DE PERGUNTA */
+        #tela-pergunta {
+            display: none;
+        }
+
+        .header-jogo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 12px;
+        }
+
+        .fase-label {
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white;
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .pontuacao-display {
+            background: linear-gradient(135deg, var(--amarelo), #e6a800);
+            color: var(--azul-escuro);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .barra-progresso-wrap {
+            background: #e8e8e8;
+            border-radius: 50px;
+            height: 10px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .barra-progresso-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--verde), var(--amarelo));
+            border-radius: 50px;
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .pergunta-numero {
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .emoji-local {
+            font-size: 56px;
+            text-align: center;
+            display: block;
+            margin-bottom: 12px;
+            animation: pulse 0.5s ease both;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .pergunta-texto {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--azul-escuro);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .opcoes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .opcao-btn {
+            background: #f0f8ff;
+            border: 2.5px solid #d0e8f5;
+            border-radius: 16px;
+            padding: 14px 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--azul-escuro);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .opcao-btn:hover:not(:disabled) {
+            background: var(--azul);
+            border-color: var(--azul);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 159, 219, 0.3);
+        }
+
+        .opcao-btn.correta {
+            background: linear-gradient(135deg, #00c851, var(--verde));
+            border-color: var(--verde);
+            color: white;
+            animation: correto 0.4s ease both;
+        }
+
+        .opcao-btn.errada {
+            background: linear-gradient(135deg, #ff6b6b, var(--coral));
+            border-color: var(--coral);
+            color: white;
+            animation: errado 0.4s ease both;
+        }
+
+        @keyframes correto {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.06);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes errado {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-6px);
+            }
+
+            75% {
+                transform: translateX(6px);
+            }
+        }
+
+        .opcao-btn:disabled {
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        /* TELA DE FEEDBACK */
+        #tela-feedback {
+            display: none;
+            text-align: center;
+        }
+
+        .feedback-icone {
+            font-size: 64px;
+            display: block;
+            margin-bottom: 12px;
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0) rotate(-20deg);
+            }
+
+            to {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .feedback-titulo {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .feedback-titulo.certo {
+            color: var(--verde);
+        }
+
+        .feedback-titulo.errado {
+            color: var(--coral);
+        }
+
+        .feedback-resposta {
+            background: #f0f8ff;
+            border-radius: 14px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+            border-left: 4px solid var(--azul);
+            text-align: left;
+        }
+
+        .feedback-curiosidade {
+            background: linear-gradient(135deg, #fff9e6, #fff3cc);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            text-align: left;
+            border-left: 4px solid var(--amarelo);
+        }
+
+        .feedback-curiosidade .rotulo {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #b8860b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .feedback-curiosidade p {
+            font-size: 0.95rem;
+            color: #5a4a00;
+            line-height: 1.6;
+        }
+
+        .btn-continuar {
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 40px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(0, 77, 122, 0.35);
+        }
+
+        .btn-continuar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 77, 122, 0.45);
+        }
+
+        /* TELA FINAL */
+        #tela-final {
+            display: none;
+            text-align: center;
+        }
+
+        .troféu {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 8px;
+            animation: troféuAnim 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes troféuAnim {
+            from {
+                transform: scale(0) rotate(-30deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .pontuacao-final {
+            font-family: 'Baloo 2', cursive;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--azul-escuro);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .pontuacao-final span {
+            font-size: 1.4rem;
+            color: #888;
+            display: block;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .classificacao-badge {
+            display: inline-block;
+            border-radius: 50px;
+            padding: 10px 28px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 16px 0 8px;
+        }
+
+        .classificacao-badge.ouro {
+            background: linear-gradient(135deg, #ffdf00, #e6a800);
+            color: #5a3d00;
+        }
+
+        .classificacao-badge.prata {
+            background: linear-gradient(135deg, #00c851, var(--verde));
+            color: white;
+        }
+
+        .classificacao-badge.bronze {
+            background: linear-gradient(135deg, #ff9f43, #e67e22);
+            color: white;
+        }
+
+        .classificacao-badge.inicio {
+            background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+            color: white;
+        }
+
+        .acertos-info {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .estatisticas {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            justify-content: center;
+        }
+
+        .stat-item {
+            background: #f0f8ff;
+            border-radius: 16px;
+            padding: 14px 20px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--azul-escuro);
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .btn-reiniciar {
+            background: linear-gradient(135deg, var(--coral), #c0392b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 40px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(232, 85, 62, 0.4);
+        }
+
+        .btn-reiniciar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(232, 85, 62, 0.5);
+        }
+
+        /* TRANSIÇÃO FASE */
+        .fase-transicao {
+            text-align: center;
+            display: none;
+        }
+
+        .fase-transicao-emoji {
+            font-size: 64px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .fase-transicao h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.8rem;
+            color: var(--azul-escuro);
+            margin-bottom: 8px;
+        }
+
+        .fase-transicao p {
+            color: #666;
+            margin-bottom: 24px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 28px 20px;
+            }
+
+            .opcoes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .titulo {
+                font-size: 1.9rem;
+            }
+
+            .pontuacao-final {
+                font-size: 3rem;
+            }
+
+            .estatisticas {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SKYLINE SVG -->
+    <div class="skyline">
+        <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+            <!-- mar -->
+            <rect x="0" y="180" width="1200" height="40" fill="#006994" opacity="0.6" />
+            <!-- prédios fundo -->
+            <rect x="0" y="130" width="40" height="90" fill="#003d5c" opacity="0.5" />
+            <rect x="45" y="110" width="30" height="110" fill="#004d6e" opacity="0.5" />
+            <rect x="80" y="120" width="50" height="100" fill="#003d5c" opacity="0.5" />
+            <rect x="135" y="100" width="35" height="120" fill="#004d6e" opacity="0.5" />
+            <rect x="175" y="115" width="45" height="105" fill="#003d5c" opacity="0.5" />
+            <rect x="225" y="105" width="30" height="115" fill="#004d6e" opacity="0.5" />
+            <rect x="260" y="90" width="55" height="130" fill="#003d5c" opacity="0.5" />
+            <!-- prédios frente -->
+            <rect x="310" y="125" width="40" height="95" fill="#002940" opacity="0.7" />
+            <rect x="355" y="105" width="35" height="115" fill="#003352" opacity="0.7" />
+            <rect x="395" y="115" width="50" height="105" fill="#002940" opacity="0.7" />
+            <rect x="450" y="95" width="40" height="125" fill="#003352" opacity="0.7" />
+            <rect x="495" y="110" width="30" height="110" fill="#002940" opacity="0.7" />
+            <!-- Pão de Açúcar -->
+            <ellipse cx="600" cy="120" rx="45" ry="65" fill="#1a1a2e" opacity="0.8" />
+            <ellipse cx="640" cy="140" rx="32" ry="50" fill="#16213e" opacity="0.8" />
+            <!-- mais prédios -->
+            <rect x="680" y="108" width="38" height="112" fill="#002940" opacity="0.7" />
+            <rect x="723" y="118" width="45" height="102" fill="#003352" opacity="0.7" />
+            <rect x="773" y="95" width="30" height="125" fill="#002940" opacity="0.7" />
+            <rect x="808" y="112" width="50" height="108" fill="#003352" opacity="0.7" />
+            <!-- Cristo Redentor (montanha + cruz) -->
+            <polygon points="900,50 940,180 860,180" fill="#1a1a2e" opacity="0.85" />
+            <rect x="917" y="50" width="6" height="30" fill="#ffffff" opacity="0.9" />
+            <rect x="907" y="62" width="26" height="5" fill="#ffffff" opacity="0.9" />
+            <!-- prédios direita -->
+            <rect x="950" y="120" width="40" height="100" fill="#002940" opacity="0.7" />
+            <rect x="995" y="105" width="35" height="115" fill="#003352" opacity="0.7" />
+            <rect x="1035" y="115" width="50" height="105" fill="#002940" opacity="0.7" />
+            <rect x="1090" y="100" width="40" height="120" fill="#003352" opacity="0.7" />
+            <rect x="1135" y="118" width="65" height="102" fill="#002940" opacity="0.7" />
+        </svg>
+    </div>
+
+    <!-- ONDAS -->
+    <div class="waves">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 L1200,80 L0,80 Z" fill="#006994"
+                opacity="0.4" />
+            <path d="M0,55 C300,25 600,75 900,45 C1050,30 1150,60 1200,55 L1200,80 L0,80 Z" fill="#004d7a"
+                opacity="0.5" />
+        </svg>
+    </div>
+
+    <div class="container">
+
+        <!-- TELA INICIAL -->
+        <div id="tela-inicio" class="card">
+            <span class="logo-emoji">🏖️</span>
+            <h1 class="titulo">Quiz <span>Rio de</span><br>Janeiro</h1>
+            <p class="subtitulo">Teste seus conhecimentos sobre os pontos turísticos mais incríveis da Cidade
+                Maravilhosa!</p>
+            <div class="fases-info">
+                <div class="fase-badge verde">🗺️ Fase 1: Onde fica?</div>
+                <div class="fase-badge amarela">🧩 Fase 2: Qual é qual?</div>
+                <div class="fase-badge coral">🎓 Fase 3: Nível difícil</div>
+            </div>
+            <button class="btn-principal" onclick="iniciarJogo()">🎮 Começar!</button>
+        </div>
+
+        <!-- TRANSIÇÃO DE FASE -->
+        <div id="tela-transicao" class="card fase-transicao">
+            <span class="fase-transicao-emoji" id="transicao-emoji"></span>
+            <h2 id="transicao-titulo"></h2>
+            <p id="transicao-desc"></p>
+            <button class="btn-continuar" onclick="continuarFase()">Vamos lá! 🚀</button>
+        </div>
+
+        <!-- TELA DE PERGUNTA -->
+        <div id="tela-pergunta" class="card">
+            <div class="header-jogo">
+                <div class="fase-label" id="fase-label">Fase 1</div>
+                <div class="pontuacao-display">⭐ <span id="pontos-display">0</span> pts</div>
+            </div>
+            <div class="barra-progresso-wrap">
+                <div class="barra-progresso-fill" id="barra-fill" style="width:0%"></div>
+            </div>
+            <p class="pergunta-numero" id="pergunta-numero">Pergunta 1 de 15</p>
+            <span class="emoji-local" id="emoji-local">🏙️</span>
+            <p class="pergunta-texto" id="pergunta-texto"></p>
+            <div class="opcoes-grid" id="opcoes-grid"></div>
+        </div>
+
+        <!-- TELA DE FEEDBACK -->
+        <div id="tela-feedback" class="card">
+            <span class="feedback-icone" id="feedback-icone"></span>
+            <h2 class="feedback-titulo" id="feedback-titulo"></h2>
+            <div class="feedback-resposta" id="feedback-resposta"></div>
+            <div class="feedback-curiosidade">
+                <div class="rotulo">💡 Você sabia?</div>
+                <p id="feedback-curiosidade"></p>
+            </div>
+            <button class="btn-continuar" onclick="proximaPergunta()">Próxima →</button>
+        </div>
+
+        <!-- TELA FINAL -->
+        <div id="tela-final" class="card">
+            <span class="troféu" id="trofeu-emoji"></span>
+            <div class="pontuacao-final" id="pontuacao-final-display">
+                0<span>pontos</span>
+            </div>
+            <div class="classificacao-badge" id="classif-badge"></div>
+            <p class="acertos-info" id="acertos-info"></p>
+            <div class="estatisticas">
+                <div class="stat-item">
+                    <div class="stat-num" id="stat-certas">0</div>
+                    <div class="stat-label">✅ Acertos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" id="stat-erradas">0</div>
+                    <div class="stat-label">❌ Erros</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" id="stat-pct">0%</div>
+                    <div class="stat-label">📊 Aproveit.</div>
+                </div>
+            </div>
+            <button class="btn-reiniciar" onclick="reiniciarJogo()">🔄 Jogar novamente</button>
+        </div>
+
+    </div>
+
+    <script>
+        // ==============================================
+        //  BANCO DE PERGUNTAS
+        // ==============================================
+        const BANCO_PERGUNTAS = {
+            fase1: [
+                {
+                    emoji: "✝️",
+                    pergunta: "Em qual morro fica o Cristo Redentor?",
+                    opcoes: ["Morro da Urca", "Morro do Corcovado", "Morro Dois Irmãos", "Pedra da Gávea"],
+                    correta: 1,
+                    curiosidade: "O Cristo Redentor fica no topo do Morro do Corcovado, a 710 metros de altitude. Inaugurado em 1931, é uma das Sete Maravilhas do Mundo Moderno e o maior do mundo em sua categoria de Art Déco."
+                },
+                {
+                    emoji: "🧱",
+                    pergunta: "A Mureta da Urca fica à beira de qual corpo d'água?",
+                    opcoes: ["Lagoa Rodrigo de Freitas", "Baía de Guanabara", "Praia de Copacabana", "Rio Carioca"],
+                    correta: 1,
+                    curiosidade: "A Mureta da Urca é um dos pontos de encontro mais charmosos do Rio. Situada à beira da Baía de Guanabara, é famosa pelos barzinhos ao ar livre com vista para o Pão de Açúcar."
+                },
+                {
+                    emoji: "🌳",
+                    pergunta: "Em qual zona da cidade fica a Floresta da Tijuca?",
+                    opcoes: ["Zona Sul", "Zona Norte", "Zona Oeste", "Centro"],
+                    correta: 1,
+                    curiosidade: "A Floresta da Tijuca é a maior floresta urbana do mundo, com mais de 3.200 hectares. Fica na Zona Norte do Rio e abriga fauna e flora riquíssimas, além de cachoeiras e trilhas históricas."
+                },
+                {
+                    emoji: "🏘️",
+                    pergunta: "O bairro de Santa Teresa fica em qual região do Rio?",
+                    opcoes: ["Zona Sul", "Zona Oeste", "Centro / Zona Central", "Zona Norte"],
+                    correta: 2,
+                    curiosidade: "Santa Teresa é um bairro boêmio no morro homônimo, próximo ao Centro do Rio. É famoso pelo Bonde de Santa Teresa, pelas ruas de paralelepípedos e pela comunidade artística vibrante."
+                },
+                {
+                    emoji: "🎸",
+                    pergunta: "O Arco da Lapa e os famosos bares ficam em qual bairro?",
+                    opcoes: ["Botafogo", "Lapa", "Catete", "Glória"],
+                    correta: 1,
+                    curiosidade: "A Lapa é o coração da boemia carioca. Os Arcos da Lapa (Aqueduto da Carioca) foram construídos no século XVIII para levar água ao Centro, e hoje servem de suporte ao bonde de Santa Teresa."
+                }
+            ],
+            fase2: [
+                {
+                    emoji: "⛰️",
+                    pergunta: "Qual é a altura aproximada do Pão de Açúcar?",
+                    opcoes: ["195 metros", "396 metros", "710 metros", "842 metros"],
+                    correta: 1,
+                    curiosidade: "O Pão de Açúcar tem 396 metros de altura. O teleférico que leva os visitantes ao topo foi inaugurado em 1912 e é um dos mais antigos do mundo ainda em funcionamento!"
+                },
+                {
+                    emoji: "🏖️",
+                    pergunta: "A Praia de Ipanema é famosa por qual música brasileira mundialmente conhecida?",
+                    opcoes: ["Aquarela do Brasil", "Garota de Ipanema", "País Tropical", "Cidade Maravilhosa"],
+                    correta: 1,
+                    curiosidade: "'Garota de Ipanema', composta por Tom Jobim e Vinícius de Moraes em 1962, foi inspirada em Helô Pinheiro, que passava diariamente pelo Bar Veloso rumo à praia. É a 2ª música mais gravada do mundo!"
+                },
+                {
+                    emoji: "🏡",
+                    pergunta: "O Parque das Ruínas em Santa Teresa é o que restou de qual espaço?",
+                    opcoes: ["Uma fábrica do século XIX", "Uma mansão de uma socialite", "Um antigo quartel", "Uma estação ferroviária"],
+                    correta: 1,
+                    curiosidade: "O Parque das Ruínas é o que sobrou da mansão de Laurinda Santos Lobo, famosa socialite e mecenas que reunia artistas e intelectuais no local no início do século XX. Hoje é um centro cultural com vista incrível."
+                },
+                {
+                    emoji: "🌿",
+                    pergunta: "O Aterro do Flamengo foi construído sobre qual tipo de terreno?",
+                    opcoes: ["Área desmatada da Zona Norte", "Aterro sobre o mar", "Terreno doado por empresas", "Antiga área industrial"],
+                    correta: 1,
+                    curiosidade: "O Aterro do Flamengo foi criado sobre o mar nos anos 1950-60, a partir de aterros com material da demolição do Morro de Santo Antônio. Tem 1,2 milhão de m² e é o maior parque urbano do Rio."
+                },
+                {
+                    emoji: "🐟",
+                    pergunta: "O que Leblon e Ipanema têm que Copacabana não tem?",
+                    opcoes: ["Acesso a trilhas na floresta", "São separados por um canal (vala)", "Têm metrô próprio", "Ficam em ilhas artificiais"],
+                    correta: 1,
+                    curiosidade: "Ipanema e Leblon são separadas pelo Canal do Jardim de Alah. A Lagoa Rodrigo de Freitas fica entre elas e o bairro do Jardim Botânico. Leblon é considerado o bairro mais caro do Brasil."
+                }
+            ],
+            fase3: [
+                {
+                    emoji: "🦅",
+                    pergunta: "Qual é a altitude da Pedra Bonita, de onde partem voos de asa-delta no Rio?",
+                    opcoes: ["394 metros", "521 metros", "289 metros", "643 metros"],
+                    correta: 1,
+                    curiosidade: "A Pedra Bonita tem 521 metros e fica no Parque Nacional da Tijuca. É o ponto de decolagem mais famoso para asa-delta e parapente do Rio, com chegada na Praia de São Conrado — uma experiência inesquecível!"
+                },
+                {
+                    emoji: "🌅",
+                    pergunta: "O Vidigal tem fama mundial. O que é o 'Mirante do Vidigal'?",
+                    opcoes: ["Uma praia secreta no morro", "Vista do alto do morro com vista para Ipanema e Leblon", "Um restaurante michelin no morro", "O topo do Morro Dois Irmãos"],
+                    correta: 1,
+                    curiosidade: "O Mirante do Vidigal oferece uma das vistas mais espetaculares do Rio, com Ipanema, Leblon e o Morro Dois Irmãos à frente. O acesso é feito pelo morro do Vidigal, que virou destino turístico internacional."
+                },
+                {
+                    emoji: "👫",
+                    pergunta: "O Morro Dois Irmãos dá nome a uma comunidade localizada entre quais praias?",
+                    opcoes: ["Copacabana e Ipanema", "Ipanema e Leblon", "Leblon e São Conrado", "Barra e Recreio"],
+                    correta: 2,
+                    curiosidade: "O Morro Dois Irmãos separa Leblon de São Conrado. A sua silhueta é uma das mais icônicas do Rio e pode ser vista de vários pontos da Zona Sul. Subir ao topo (438m) é uma das trilhas urbanas mais recompensadoras da cidade."
+                },
+                {
+                    emoji: "🐍",
+                    pergunta: "A Vista Chinesa, no Parque Nacional da Tijuca, foi inaugurada em qual século?",
+                    opcoes: ["Século XVIII (1700s)", "Século XIX (1800s)", "Século XX (1900s)", "Século XXI (2000s)"],
+                    correta: 1,
+                    curiosidade: "A Vista Chinesa foi inaugurada em 1850, durante o Segundo Reinado. O quiosque em estilo oriental foi construído como homenagem aos imigrantes chineses que vieram ao Brasil para cultivar chá. Hoje tem vista privilegiada da Lagoa e da Zona Sul."
+                },
+                {
+                    emoji: "🏄",
+                    pergunta: "A Praia da Barra da Tijuca é famosa por ser a mais longa do Rio. Qual sua extensão aproximada?",
+                    opcoes: ["5 km", "12 km", "18 km", "25 km"],
+                    correta: 2,
+                    curiosidade: "A Praia da Barra da Tijuca tem aproximadamente 18 km de extensão, tornando-a a maior praia do Rio de Janeiro. Desenvolvida a partir dos anos 1970, é conhecida pelas ondas fortes, ideal para surfe, e pelos condomínios luxuosos."
+                }
+            ]
+        };
+
+        // ==============================================
+        //  ESTADO DO JOGO
+        // ==============================================
+        let estado = {
+            faseAtual: 0,           // 0=não iniciado, 1,2,3=fases
+            perguntaAtualIndex: 0,  // índice na lista embaralhada
+            pontos: 0,
+            acertos: 0,
+            erros: 0,
+            perguntasEmbaralhadas: [], // lista completa de todas as 15 perguntas
+            respostaAtualCorreta: -1,
+            aguardandoResposta: true,
+            transicaoMostrada: false  // controla se a transição já foi exibida para a fase atual
+        };
+
+        const FASES_INFO = [
+            null,
+            { nome: "Fase 1: Onde fica?", emoji: "🗺️", desc: "5 perguntas sobre a localização dos pontos turísticos do Rio." },
+            { nome: "Fase 2: Qual é qual?", emoji: "🧩", desc: "5 perguntas sobre características e curiosidades dos locais." },
+            { nome: "Fase 3: Você sabe de verdade?", emoji: "🎓", desc: "5 perguntas mais difíceis para os verdadeiros cariocas de coração!" }
+        ];
+
+        // Embaralha array (Fisher-Yates)
+        function embaralhar(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        // Prepara lista completa de 15 perguntas (5+5+5 já em ordem de fase)
+        function prepararPerguntas() {
+            const f1 = embaralhar(BANCO_PERGUNTAS.fase1);
+            const f2 = embaralhar(BANCO_PERGUNTAS.fase2);
+            const f3 = embaralhar(BANCO_PERGUNTAS.fase3);
+            return [
+                ...f1.map(p => ({ ...p, fase: 1 })),
+                ...f2.map(p => ({ ...p, fase: 2 })),
+                ...f3.map(p => ({ ...p, fase: 3 }))
+            ];
+        }
+
+        // ==============================================
+        //  NAVEGAÇÃO DE TELAS
+        // ==============================================
+        function mostrarTela(id) {
+            ['tela-inicio', 'tela-pergunta', 'tela-feedback', 'tela-final', 'tela-transicao']
+                .forEach(t => {
+                    const el = document.getElementById(t);
+                    el.style.display = 'none';
+                    el.style.animation = '';
+                });
+            const alvo = document.getElementById(id);
+            alvo.style.display = 'block';
+            // Força reflow para reativar a animação
+            void alvo.offsetWidth;
+            alvo.style.animation = 'slideUp 0.5s cubic-bezier(0.34,1.56,0.64,1) both';
+        }
+
+        // ==============================================
+        //  INÍCIO DO JOGO
+        // ==============================================
+        function iniciarJogo() {
+            estado.pontos = 0;
+            estado.acertos = 0;
+            estado.erros = 0;
+            estado.perguntaAtualIndex = 0;
+            estado.faseAtual = 1;
+            estado.transicaoMostrada = false;
+            estado.perguntasEmbaralhadas = prepararPerguntas();
+            mostrarTransicaoFase(1);
+        }
+
+        function mostrarTransicaoFase(numFase) {
+            estado.faseAtual = numFase;
+            const info = FASES_INFO[numFase];
+            document.getElementById('transicao-emoji').textContent = info.emoji;
+            document.getElementById('transicao-titulo').textContent = info.nome;
+            document.getElementById('transicao-desc').textContent = info.desc;
+            mostrarTela('tela-transicao');
+        }
+
+        function continuarFase() {
+            mostrarPergunta();
+        }
+
+        // ==============================================
+        //  EXIBIR PERGUNTA
+        // ==============================================
+        function mostrarPergunta() {
+            if (estado.perguntaAtualIndex >= estado.perguntasEmbaralhadas.length) {
+                mostrarFinal();
+                return;
+            }
+
+            const pergunta = estado.perguntasEmbaralhadas[estado.perguntaAtualIndex];
+            const totalPerguntas = estado.perguntasEmbaralhadas.length; // 15
+
+            // Verifica se precisa mostrar transição de fase (apenas quando a fase mudou)
+            if (pergunta.fase !== estado.faseAtual) {
+                mostrarTransicaoFase(pergunta.fase);
+                return;
+            }
+
+            // Atualiza UI
+            const progresso = (estado.perguntaAtualIndex / totalPerguntas) * 100;
+            document.getElementById('barra-fill').style.width = progresso + '%';
+            document.getElementById('pontos-display').textContent = estado.pontos;
+            document.getElementById('pergunta-numero').textContent =
+                `Pergunta ${estado.perguntaAtualIndex + 1} de ${totalPerguntas}`;
+
+            // Label de fase
+            const faseLabels = ['', 'Fase 1 — Onde fica?', 'Fase 2 — Qual é qual?', 'Fase 3 — Nível difícil'];
+            document.getElementById('fase-label').textContent = faseLabels[pergunta.fase];
+
+            document.getElementById('emoji-local').textContent = pergunta.emoji;
+            document.getElementById('pergunta-texto').textContent = pergunta.pergunta;
+
+            // Opcoes embaralhadas (manter rastreio da correta)
+            const indices = [0, 1, 2, 3];
+            const indicesEmbaralhados = embaralhar(indices);
+
+            // Achar a nova posição da resposta correta
+            const novaPosCorreta = indicesEmbaralhados.indexOf(pergunta.correta);
+            estado.respostaAtualCorreta = novaPosCorreta;
+            estado.aguardandoResposta = true;
+
+            const grid = document.getElementById('opcoes-grid');
+            grid.innerHTML = '';
+            indicesEmbaralhados.forEach((idxOriginal, posicaoExibida) => {
+                const btn = document.createElement('button');
+                btn.className = 'opcao-btn';
+                btn.textContent = pergunta.opcoes[idxOriginal];
+                btn.onclick = () => responder(posicaoExibida, pergunta, btn, grid);
+                grid.appendChild(btn);
+            });
+
+            mostrarTela('tela-pergunta');
+        }
+
+        // ==============================================
+        //  RESPOSTA
+        // ==============================================
+        function responder(posicaoClicada, pergunta, btnClicado, grid) {
+            if (!estado.aguardandoResposta) return;
+            estado.aguardandoResposta = false;
+
+            const acertou = posicaoClicada === estado.respostaAtualCorreta;
+
+            // Desabilitar todos
+            const botoes = grid.querySelectorAll('.opcao-btn');
+            botoes.forEach(b => b.disabled = true);
+
+            // Marcar correta e errada
+            botoes[estado.respostaAtualCorreta].classList.add('correta');
+            if (!acertou) {
+                btnClicado.classList.add('errada');
+                estado.erros++;
+            } else {
+                estado.pontos += 10;
+                estado.acertos++;
+            }
+
+            // Aguardar animação e ir para feedback
+            setTimeout(() => mostrarFeedback(acertou, pergunta), 700);
+        }
+
+        // ==============================================
+        //  FEEDBACK
+        // ==============================================
+        function mostrarFeedback(acertou, pergunta) {
+            document.getElementById('feedback-icone').textContent = acertou ? '🎉' : '😅';
+            const titulo = document.getElementById('feedback-titulo');
+            titulo.textContent = acertou ? 'Acertou! Mandou bem!' : 'Não dessa vez...';
+            titulo.className = 'feedback-titulo ' + (acertou ? 'certo' : 'errado');
+
+            const respostaCorretaTexto = pergunta.opcoes[pergunta.correta];
+            document.getElementById('feedback-resposta').innerHTML =
+                acertou
+                    ? `✅ Resposta correta: <strong>${respostaCorretaTexto}</strong>`
+                    : `A resposta correta era: <strong>${respostaCorretaTexto}</strong>`;
+
+            document.getElementById('feedback-curiosidade').textContent = pergunta.curiosidade;
+            mostrarTela('tela-feedback');
+        }
+
+        // ==============================================
+        //  PRÓXIMA PERGUNTA
+        // ==============================================
+        function proximaPergunta() {
+            estado.perguntaAtualIndex++;
+            mostrarPergunta();
+        }
+
+        // ==============================================
+        //  TELA FINAL
+        // ==============================================
+        function mostrarFinal() {
+            const total = estado.perguntasEmbaralhadas.length;
+            const pct = Math.round((estado.acertos / total) * 100);
+
+            document.getElementById('pontuacao-final-display').innerHTML =
+                `${estado.pontos}<span>de 150 pontos</span>`;
+            document.getElementById('stat-certas').textContent = estado.acertos;
+            document.getElementById('stat-erradas').textContent = estado.erros;
+            document.getElementById('stat-pct').textContent = pct + '%';
+
+            let trofeu, classifTexto, classifClasse, mensagem;
+
+            if (estado.pontos >= 150) {
+                trofeu = '🏆';
+                classifTexto = '🌟 Carioca de coração!';
+                classifClasse = 'ouro';
+                mensagem = `Parabéns! Você acertou todas as ${total} perguntas! O Rio não tem segredos para você!`;
+            } else if (estado.pontos >= 100) {
+                trofeu = '🥈';
+                classifTexto = '😎 Quase local!';
+                classifClasse = 'prata';
+                mensagem = `Muito bom! Você acertou ${estado.acertos} de ${total}. Mais uma visita ao Rio e você vira carioca!`;
+            } else if (estado.pontos >= 60) {
+                trofeu = '🥉';
+                classifTexto = '📚 Turista em evolução';
+                classifClasse = 'bronze';
+                mensagem = `Nada mal! Você acertou ${estado.acertos} de ${total}. Já conhece bastante o Rio, mas ainda tem o que descobrir!`;
+            } else {
+                trofeu = '✈️';
+                classifTexto = '🗺️ Bora conhecer o Rio?';
+                classifClasse = 'inicio';
+                mensagem = `Você acertou ${estado.acertos} de ${total}. Está na hora de visitar a Cidade Maravilhosa e aprender de perto!`;
+            }
+
+            document.getElementById('trofeu-emoji').textContent = trofeu;
+            const badge = document.getElementById('classif-badge');
+            badge.textContent = classifTexto;
+            badge.className = 'classificacao-badge ' + classifClasse;
+            document.getElementById('acertos-info').textContent = mensagem;
+
+            mostrarTela('tela-final');
+        }
+
+        // ==============================================
+        //  REINICIAR
+        // ==============================================
+        function reiniciarJogo() {
+            estado.faseAtual = 0;
+            mostrarTela('tela-inicio');
+        }
+    </script>
+</body>
+
+</html>
