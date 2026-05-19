@@ -41,8 +41,6 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
 - **Ferramentas**: IA Antigravity integrada ao VS Code
 
 ## 🚀 Acesse o Dashboard
-  [http://localhost:8000/Integracao_gmail_calendario/dashboard.html](http://localhost:8000/Integracao_gmail_calendario/dashboard.html)
-  [http://127.0.0.1:5500/Integracao_gmail_calendario/dashboard.html](http://127.0.0.1:5500/Integracao_gmail_calendario/dashboard.html)
   [https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html](https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html)
   
   ![Dashboard](Integracao_gmail_calendario/image_dashboard.png)
