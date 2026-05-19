@@ -29,7 +29,7 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
   ![Dashboard](image_dashboard.png)
 
 ## ⚙️ Como testar localmente
-As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). 
-Para testar em sua máquina, o ideal é seguir o passo a passo das orientações da instrutora **Gabriela Surita**
+As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`).  
+Para testar em sua máquina, o ideal é seguir o passo a passo das orientações da instrutora **Gabriela Surita**  
 👉 [Curso Vibecoding - Gabriela Surita](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
 
