@@ -42,6 +42,7 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
 
 ## 🚀 Acesse o Dashboard
   [http://localhost:8000/Integracao_gmail_calendario/dashboard.html](http://localhost:8000/Integracao_gmail_calendario/dashboard.html)
+  [http://127.0.0.1:5500/Integracao_gmail_calendario/dashboard.html](http://127.0.0.1:5500/Integracao_gmail_calendario/dashboard.html)
   
   ![Dashboard](Integracao_gmail_calendario/image_dashboard.png)
 
