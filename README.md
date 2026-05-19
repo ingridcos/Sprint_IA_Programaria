@@ -2,7 +2,7 @@
 
 A PrograMaria é uma iniciativa brasileira que busca aumentar a presença de mulheres na tecnologia por meio de cursos, eventos e ações de engajamento focados em inclusão e diversidade na área. A organização oferece formações introdutórias em programação e tecnologia para quem está começando do zero, além de promover eventos para networking e troca de experiências com a comunidade
 
-# Programaria - Sprint IA Generativa no Trabalho
+# 👩‍💻 Programaria - Sprint IA Generativa no Trabalho
 
 Este projeto foi desenvolvido como parte da **Sprint IA Generativa no Trabalho** do programa de formação em desenvolvimento web da **Programaria** de forma gratuita em maio de 2026. O objetivo do curso é entender o impacto da IA Generativa em diferentes áreas e descobrir como aplicá-la de maneira eficiente no dia a dia!  
 
