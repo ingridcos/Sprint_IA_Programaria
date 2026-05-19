@@ -46,10 +46,8 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
   ![Dashboard](image_dashboard.png)
 
 ## ⚙️ Como testar localmente
-As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). Para testar na sua máquina:
+As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). 
+Para testar em sua máquina, o ideal é seguir o passo a passo das orientações da instrutora **Gabriela Surita**
+- [Curso Vibecoding - Gabriela Surita](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
 
-1. Clone este repositório.
-2. Abra a pasta no VS Code.
-3. Instale a extensão **Live Server**.
-4. Clique com o botão direito em `dashboard.html` → **Open with Live Server**.
-5. O projeto abrirá em algo como `http://localhost:8000/dashboard.htm`.
+
