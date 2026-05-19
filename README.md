@@ -43,7 +43,7 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
 ## 🚀 Acesse o Dashboard
   👉 **[http://localhost:8000/dashboard.html](http://localhost:8000/dashboard.html)**
 
-  ![Dashboard](image_dashboard.png)
+  ![Dashboard](Integracao_gmail_calendario/image_dashboard.png)
 
 ## ⚙️ Como testar localmente
 As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). 
