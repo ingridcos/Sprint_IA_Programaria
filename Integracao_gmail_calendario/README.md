@@ -24,12 +24,12 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
 - **Ferramentas**: IA Antigravity integrada ao VS Code
 
 ## 🚀 Acesse o Dashboard
-  [https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html](https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html)
+👉 [https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html](https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html)
   
   ![Dashboard](image_dashboard.png)
 
 ## ⚙️ Como testar localmente
 As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). 
 Para testar em sua máquina, o ideal é seguir o passo a passo das orientações da instrutora **Gabriela Surita**
-- [Curso Vibecoding - Gabriela Surita](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
+👉 [Curso Vibecoding - Gabriela Surita](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
 
