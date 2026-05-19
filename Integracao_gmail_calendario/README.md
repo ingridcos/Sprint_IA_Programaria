@@ -26,7 +26,7 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
 ## 🚀 Acesse o Dashboard
   [https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html](https://ingridcos.github.io/Sprint_IA_Programaria/Integracao_gmail_calendario/dashboard.html)
   
-  ![Dashboard](Integracao_gmail_calendario/image_dashboard.png)
+  ![Dashboard](image_dashboard.png)
 
 ## ⚙️ Como testar localmente
 As APIs do Google possuem regras rígidas de segurança e **não funcionam** ao simplesmente abrir o arquivo HTML no navegador (`file:///`). 
