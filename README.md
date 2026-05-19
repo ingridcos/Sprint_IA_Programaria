@@ -27,8 +27,8 @@ Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado
 ## ✨ Funcionalidades
 - **Integração com o Google**: Autenticação segura usando *Google Identity Services*.
 - **Caixa de Entrada (Gmail)**: Conta os emails não lidos e estima o tempo necessário para leitura.
-- **Agenda do Dia (Google Calendar)**: Lista os eventos e reuniões agendadas para o dia atual com cálculo dinâmico de tempo ocupado.
-- **Design Moderno**: Interface limpa, responsiva e agradável com um tema em tons de roxo, utilizando a fonte *Outfit*.
+- **Agenda do Dia (Google Calendar)**: Lista os eventos e reuniões agendadas para o dia atual.
+- **Design Moderno**: Interface limpa, responsiva e agradável com um tema em tons de roxo, utilizando a fonte *Outfit*
 - **Acesso Fácil**: O usuário faz o login apenas quando necessário, sem armazenar dados sensíveis.
 
 ## 🛠️ Tecnologias Utilizadas
