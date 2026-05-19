@@ -35,7 +35,7 @@ Telas do jogo:
 * Tela final com pontuação total, classificação e botão "Jogar novamente"
 
 Classificação final:
-* 150 pontos: "Carioca de coração!"
+* 150 pontos: "Carioca da gema e de coração!"
 * 100–140 pontos: "Quase local!"
 * 60–90 pontos: "Turista em evolução"
 * Abaixo de 60: "Bora conhecer o Rio?"
@@ -59,5 +59,5 @@ Ao clicar em "Vamos lá!" na tela de transição da Fase 2, o jogo entrava em lo
 
 ## Ferramenta utilizada
 
-- **IA:** Claude Sonnet (Anthropic) — claude.ai
+- **IA:** Claude Sonnet (Anthropic) — claude.ai e Replit
 - **Vibecoding:** o prompt descreveu o produto desejado; a IA gerou e corrigiu o código
