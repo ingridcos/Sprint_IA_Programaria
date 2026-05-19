@@ -32,7 +32,7 @@ Acesse o jogo e responda 15 perguntas divididas em 3 fases sobre os pontos turí
 
 | Pontuação | Classificação |
 |---|---|
-| 150 pontos | 🌟 Carioca de coração! |
+| 150 pontos | 🌟 Carioca da gema e de coração! |
 | 100–140 pontos | 😎 Quase local! |
 | 60–90 pontos | 📚 Turista em evolução |
 | Abaixo de 60 | 🗺️ Bora conhecer o Rio? |
@@ -50,4 +50,4 @@ Cristo Redentor, Pão de Açúcar, Mureta da Urca, Aterro do Flamengo, Lapa, San
 
 ## 🤖 Gerado com IA
 
-Este projeto foi criado com auxílio do Claude (Anthropic) a partir de um prompt descritivo. Veja o arquivo `prompt.md` para o prompt completo utilizado.
+Este projeto foi criado com auxílio do Claude (Anthropic) e do Replit a partir de um prompt descritivo. Veja o arquivo `prompt.md` para o prompt completo utilizado.
