@@ -23,7 +23,7 @@ A instrutora **Gabriela Surita** disponibilizou orientações em seu GitHub:
 👉 [Curso Vibecoding](https://gabisurita.github.io/gabisurita/courses/vibecoding/)
 
 Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado ao VS Code  
-[Pasta do projeto](https://github.com/ingridcos/Sprint_IA_Programaria/tree/master/Integracao_gmail_calendario)
+👉[Pasta do projeto](https://github.com/ingridcos/Sprint_IA_Programaria/tree/master/Integracao_gmail_calendario)
 
 
 # 🏖️ Quiz Rio de Janeiro
@@ -33,9 +33,9 @@ Com 15 perguntas divididas em três fases, você vai explorar locais famosos com
 Cada resposta certa vale pontos e traz uma curiosidade divertida sobre o lugar, tornando a experiência educativa e descontraída.  
 No final, sua pontuação revela se você é um verdadeiro **"Carioca de coração"** ou se ainda está no nível **"Turista em evolução"**. 🌞🌊
 
-- [Pasta do projeto](https://github.com/ingridcos/Sprint_IA_Programaria/tree/master/quiz_rj)
-- [Quiz 1](https://rio-quiz-tour--ingridcos.replit.app/)
-- [Quiz 2](https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61)
+👉[Pasta do projeto](https://github.com/ingridcos/Sprint_IA_Programaria/tree/master/quiz_rj)
+👉[Quiz 1](https://rio-quiz-tour--ingridcos.replit.app/)
+👉[Quiz 2](https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61)
 
 
 
