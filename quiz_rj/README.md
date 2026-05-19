@@ -6,10 +6,10 @@ Um jogo de quiz interativo sobre os pontos turísticos da Cidade Maravilhosa, cr
 
 Acesse o jogo e responda 15 perguntas divididas em 3 fases sobre os pontos turísticos do Rio de Janeiro.
 
-## Acesso
+## 💻 Acesso
 
-[https://rio-quiz-tour--ingridcos.replit.app/](https://rio-quiz-tour--ingridcos.replit.app/)
-[https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61](https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61)
+- [https://rio-quiz-tour--ingridcos.replit.app/](https://rio-quiz-tour--ingridcos.replit.app/)
+- [https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61](https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61)
 
 
 ## 📁 Arquivos
