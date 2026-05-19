@@ -54,8 +54,6 @@ Para testar em sua máquina, o ideal é seguir o passo a passo das orientações
 
 # 🏖️ Quiz Rio de Janeiro
 
-## 🎮 Sobre o Quiz
-
 Este é um jogo interativo em formato de quiz que desafia você a testar seus conhecimentos sobre os pontos turísticos mais icônicos do Rio de Janeiro.  
 Com 15 perguntas divididas em três fases, você vai explorar locais famosos como o Cristo Redentor, Pão de Açúcar, Copacabana e muito mais.  
 Cada resposta certa vale pontos e traz uma curiosidade divertida sobre o lugar, tornando a experiência educativa e descontraída.  
