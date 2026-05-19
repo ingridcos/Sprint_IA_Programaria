@@ -13,7 +13,9 @@ Este projeto foi desenvolvido como parte da **Sprint IA Generativa no Trabalho**
 - ✅ Automação de tarefas e fluxos  
 - ✅ Desenvolvimento com APIs e agentes  
 - ✅ Escala, automação e governança  
-- ✅ Governança, riscos e responsabilidade  
+- ✅ Governança, riscos e responsabilidade
+
+[Segue o Plano de Estudos guiado da Programaria](https://docs.google.com/spreadsheets/d/1ZthP5B1K237eFKQBYIIWavQmJdzva38HuBWSsH6YGj0/edit?usp=sharing)
 
 # 🗓️ Dashboard com Integração do Gmail e Google Calendar
 
