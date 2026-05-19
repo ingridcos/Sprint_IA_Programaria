@@ -15,7 +15,7 @@ Este projeto foi desenvolvido como parte da **Sprint IA Generativa no Trabalho**
 - ✅ Escala, automação e governança  
 - ✅ Governança, riscos e responsabilidade  
 
-# Dashboard com Integração do Gmail e Google Calendar
+# 🗓️ Dashboard com Integração do Gmail e Google Calendar
 
 Um dashboard diário moderno, responsivo e integrado às APIs do Google (Gmail e Google Calendar). Ele ajuda a organizar o começo do dia mostrando a quantidade de emails não lidos, reuniões agendadas para o dia e algumas métricas rápidas, com foco em uma rotina mais produtiva
 
