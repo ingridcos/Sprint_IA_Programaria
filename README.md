@@ -27,18 +27,6 @@ A instrutora **Gabriela Surita** disponibilizou orientações em seu GitHub:
 Utilizamos a plataforma **Antigravity** como agente de desenvolvimento integrado ao VS Code  
 👉[Pasta do projeto](https://github.com/ingridcos/Sprint_IA_Programaria/tree/master/Integracao_gmail_calendario)
 
-
-# 🏖️ Quiz Rio de Janeiro
-
-Este é um jogo interativo em formato de quiz que desafia você a testar seus conhecimentos sobre os pontos turísticos mais icônicos do Rio de Janeiro.  
-Com 15 perguntas divididas em três fases, você vai explorar locais famosos como o Cristo Redentor, Pão de Açúcar, Copacabana e muito mais.  
-Cada resposta certa vale pontos e traz uma curiosidade divertida sobre o lugar, tornando a experiência educativa e descontraída.  
-No final, sua pontuação revela se você é um verdadeiro **"Carioca de coração"** ou se ainda está no nível **"Turista em evolução"**. 
-
-👉[Pasta do projeto](https://github.com/ingridcos/Sprint_IA_Programaria/tree/master/quiz_rj)  
-👉[Quiz 1](https://rio-quiz-tour--ingridcos.replit.app/)  
-👉[Quiz 2](https://claude.ai/public/artifacts/b5cde115-2b23-4744-83b0-958331406f61)
-
 # 👩‍💻 Sobre Mim
 
 - Administradora formada pela UniCarioca  
